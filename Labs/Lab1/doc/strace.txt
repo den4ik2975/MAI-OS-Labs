@@ -1,0 +1,262 @@
+root@d1282f6d624c:/IdeaProjects/MAI_OS_Labs/build# strace -f ./Lab1_exe
+execve("./Lab1_exe", ["./Lab1_exe"], 0x7ffebcb7f928 /* 21 vars */) = 0
+brk(NULL)                               = 0x1719000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f741ca89000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=25258, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 25258, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f741ca82000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20t\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=1922136, ...}, AT_EMPTY_PATH) = 0
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f741c8a1000
+mmap(0x7f741c8c7000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7f741c8c7000
+mmap(0x7f741ca1c000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7f741ca1c000
+mmap(0x7f741ca6f000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7f741ca6f000
+mmap(0x7f741ca75000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f741ca75000
+close(3)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f741c89e000
+arch_prctl(ARCH_SET_FS, 0x7f741c89e740) = 0
+set_tid_address(0x7f741c89ea10)         = 39369
+set_robust_list(0x7f741c89ea20, 24)     = 0
+rseq(0x7f741c89f060, 0x20, 0, 0x53053053) = 0
+mprotect(0x7f741ca6f000, 16384, PROT_READ) = 0
+mprotect(0x403000, 4096, PROT_READ)     = 0
+mprotect(0x7f741cabb000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0x7f741ca82000, 25258)           = 0
+pipe2([3, 4], 0)                        = 0
+pipe2([5, 6], 0)                        = 0
+newfstatat(1, "", {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x1), ...}, AT_EMPTY_PATH) = 0
+getrandom("\x18\x8e\x0f\x4a\xed\xc0\x07\x23", 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0x1719000
+brk(0x173a000)                          = 0x173a000
+newfstatat(0, "", {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x1), ...}, AT_EMPTY_PATH) = 0
+write(1, "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\270\320\274\321\217 \321\204\320\260\320\271\320\273\320\260"..., 48Введите имя файла для child1: ) = 48
+read(0, biba
+"biba\n", 1024)                 = 5
+write(1, "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\270\320\274\321\217 \321\204\320\260\320\271\320\273\320\260"..., 48Введите имя файла для child2: ) = 48
+read(0, boba
+"boba\n", 1024)                 = 5
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLDstrace: Process 39420 attached
+, child_tidptr=0x7f741c89ea10) = 39420
+[pid 39420] set_robust_list(0x7f741c89ea20, 24) = 0
+[pid 39369] clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD <unfinished ...>
+[pid 39420] close(4strace: Process 39421 attached
+ <unfinished ...>
+[pid 39369] <... clone resumed>, child_tidptr=0x7f741c89ea10) = 39421
+[pid 39420] <... close resumed>)        = 0
+[pid 39421] set_robust_list(0x7f741c89ea20, 24 <unfinished ...>
+[pid 39369] close(3 <unfinished ...>
+[pid 39420] dup2(3, 0 <unfinished ...>
+[pid 39369] <... close resumed>)        = 0
+[pid 39421] <... set_robust_list resumed>) = 0
+[pid 39369] close(5 <unfinished ...>
+[pid 39420] <... dup2 resumed>)         = 0
+[pid 39369] <... close resumed>)        = 0
+[pid 39421] close(6 <unfinished ...>
+[pid 39420] close(3 <unfinished ...>
+[pid 39369] write(1, "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \321\201\321\202\321\200\320\276\320\272\320\270 (Ctr"..., 66 <unfinished ...>
+Введите строки (Ctrl+D для завершения):
+[pid 39421] <... close resumed>)        = 0
+[pid 39420] <... close resumed>)        = 0
+[pid 39369] <... write resumed>)        = 66
+[pid 39421] dup2(5, 0 <unfinished ...>
+[pid 39369] write(4, "\n", 1 <unfinished ...>
+[pid 39420] close(5 <unfinished ...>
+[pid 39369] <... write resumed>)        = 1
+[pid 39421] <... dup2 resumed>)         = 0
+[pid 39420] <... close resumed>)        = 0
+[pid 39369] read(0,  <unfinished ...>
+[pid 39421] close(5 <unfinished ...>
+[pid 39420] close(6 <unfinished ...>
+[pid 39421] <... close resumed>)        = 0
+[pid 39420] <... close resumed>)        = 0
+[pid 39421] close(3)                    = 0
+[pid 39420] execve("./child1", ["child1", "biba"], 0x7fff3e46ed78 /* 21 vars */ <unfinished ...>
+[pid 39421] close(4)                    = 0
+[pid 39421] execve("./child2", ["child2", "boba"], 0x7fff3e46ed78 /* 21 vars */) = 0
+[pid 39420] <... execve resumed>)       = 0
+[pid 39421] brk(NULL <unfinished ...>
+[pid 39420] brk(NULL <unfinished ...>
+[pid 39421] <... brk resumed>)          = 0x1957000
+[pid 39420] <... brk resumed>)          = 0x16ea000
+[pid 39421] mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid 39420] mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid 39421] <... mmap resumed>)         = 0x7f5e83cb8000
+[pid 39420] <... mmap resumed>)         = 0x7f63f4ef6000
+[pid 39421] access("/etc/ld.so.preload", R_OK <unfinished ...>
+[pid 39420] access("/etc/ld.so.preload", R_OK <unfinished ...>
+[pid 39421] <... access resumed>)       = -1 ENOENT (No such file or directory)
+[pid 39420] <... access resumed>)       = -1 ENOENT (No such file or directory)
+[pid 39421] openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+[pid 39420] openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+[pid 39421] <... openat resumed>)       = 3
+[pid 39420] <... openat resumed>)       = 3
+[pid 39421] newfstatat(3, "",  <unfinished ...>
+[pid 39420] newfstatat(3, "",  <unfinished ...>
+[pid 39421] <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=25258, ...}, AT_EMPTY_PATH) = 0
+[pid 39420] <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=25258, ...}, AT_EMPTY_PATH) = 0
+[pid 39421] mmap(NULL, 25258, PROT_READ, MAP_PRIVATE, 3, 0 <unfinished ...>
+[pid 39420] mmap(NULL, 25258, PROT_READ, MAP_PRIVATE, 3, 0 <unfinished ...>
+[pid 39421] <... mmap resumed>)         = 0x7f5e83cb1000
+[pid 39420] <... mmap resumed>)         = 0x7f63f4eef000
+[pid 39421] close(3 <unfinished ...>
+[pid 39420] close(3 <unfinished ...>
+[pid 39421] <... close resumed>)        = 0
+[pid 39420] <... close resumed>)        = 0
+[pid 39421] openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+[pid 39420] openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+[pid 39421] <... openat resumed>)       = 3
+[pid 39420] <... openat resumed>)       = 3
+[pid 39421] read(3,  <unfinished ...>
+[pid 39420] read(3,  <unfinished ...>
+[pid 39421] <... read resumed>"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20t\2\0\0\0\0\0"..., 832) = 832
+[pid 39420] <... read resumed>"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20t\2\0\0\0\0\0"..., 832) = 832
+[pid 39421] pread64(3,  <unfinished ...>
+[pid 39420] pread64(3,  <unfinished ...>
+[pid 39421] <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+[pid 39420] <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+[pid 39421] newfstatat(3, "",  <unfinished ...>
+[pid 39420] newfstatat(3, "",  <unfinished ...>
+[pid 39421] <... newfstatat resumed>{st_mode=S_IFREG|0755, st_size=1922136, ...}, AT_EMPTY_PATH) = 0
+[pid 39420] <... newfstatat resumed>{st_mode=S_IFREG|0755, st_size=1922136, ...}, AT_EMPTY_PATH) = 0
+[pid 39421] pread64(3,  <unfinished ...>
+[pid 39420] pread64(3,  <unfinished ...>
+[pid 39421] <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+[pid 39420] <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+[pid 39421] mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0 <unfinished ...>
+[pid 39420] mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0 <unfinished ...>
+[pid 39421] <... mmap resumed>)         = 0x7f5e83ad0000
+[pid 39420] <... mmap resumed>)         = 0x7f63f4d0e000
+[pid 39421] mmap(0x7f5e83af6000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000 <unfinished ...>
+[pid 39420] mmap(0x7f63f4d34000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000 <unfinished ...>
+[pid 39421] <... mmap resumed>)         = 0x7f5e83af6000
+[pid 39421] mmap(0x7f5e83c4b000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000 <unfinished ...>
+[pid 39420] <... mmap resumed>)         = 0x7f63f4d34000
+[pid 39421] <... mmap resumed>)         = 0x7f5e83c4b000
+[pid 39420] mmap(0x7f63f4e89000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000 <unfinished ...>
+[pid 39421] mmap(0x7f5e83c9e000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000 <unfinished ...>
+[pid 39420] <... mmap resumed>)         = 0x7f63f4e89000
+[pid 39421] <... mmap resumed>)         = 0x7f5e83c9e000
+[pid 39420] mmap(0x7f63f4edc000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000 <unfinished ...>
+[pid 39421] mmap(0x7f5e83ca4000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid 39420] <... mmap resumed>)         = 0x7f63f4edc000
+[pid 39421] <... mmap resumed>)         = 0x7f5e83ca4000
+[pid 39420] mmap(0x7f63f4ee2000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid 39421] close(3 <unfinished ...>
+[pid 39420] <... mmap resumed>)         = 0x7f63f4ee2000
+[pid 39421] <... close resumed>)        = 0
+[pid 39420] close(3 <unfinished ...>
+[pid 39421] mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid 39420] <... close resumed>)        = 0
+[pid 39421] <... mmap resumed>)         = 0x7f5e83acd000
+[pid 39420] mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+[pid 39421] arch_prctl(ARCH_SET_FS, 0x7f5e83acd740 <unfinished ...>
+[pid 39420] <... mmap resumed>)         = 0x7f63f4d0b000
+[pid 39421] <... arch_prctl resumed>)   = 0
+[pid 39420] arch_prctl(ARCH_SET_FS, 0x7f63f4d0b740 <unfinished ...>
+[pid 39421] set_tid_address(0x7f5e83acda10 <unfinished ...>
+[pid 39420] <... arch_prctl resumed>)   = 0
+[pid 39421] <... set_tid_address resumed>) = 39421
+[pid 39420] set_tid_address(0x7f63f4d0ba10 <unfinished ...>
+[pid 39421] set_robust_list(0x7f5e83acda20, 24 <unfinished ...>
+[pid 39420] <... set_tid_address resumed>) = 39420
+[pid 39421] <... set_robust_list resumed>) = 0
+[pid 39420] set_robust_list(0x7f63f4d0ba20, 24 <unfinished ...>
+[pid 39421] rseq(0x7f5e83ace060, 0x20, 0, 0x53053053 <unfinished ...>
+[pid 39420] <... set_robust_list resumed>) = 0
+[pid 39421] <... rseq resumed>)         = 0
+[pid 39420] rseq(0x7f63f4d0c060, 0x20, 0, 0x53053053) = 0
+[pid 39421] mprotect(0x7f5e83c9e000, 16384, PROT_READ) = 0
+[pid 39420] mprotect(0x7f63f4edc000, 16384, PROT_READ <unfinished ...>
+[pid 39421] mprotect(0x403000, 4096, PROT_READ <unfinished ...>
+[pid 39420] <... mprotect resumed>)     = 0
+[pid 39421] <... mprotect resumed>)     = 0
+[pid 39420] mprotect(0x403000, 4096, PROT_READ <unfinished ...>
+[pid 39421] mprotect(0x7f5e83cea000, 8192, PROT_READ <unfinished ...>
+[pid 39420] <... mprotect resumed>)     = 0
+[pid 39421] <... mprotect resumed>)     = 0
+[pid 39420] mprotect(0x7f63f4f28000, 8192, PROT_READ <unfinished ...>
+[pid 39421] prlimit64(0, RLIMIT_STACK, NULL,  <unfinished ...>
+[pid 39420] <... mprotect resumed>)     = 0
+[pid 39421] <... prlimit64 resumed>{rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+[pid 39420] prlimit64(0, RLIMIT_STACK, NULL,  <unfinished ...>
+[pid 39421] munmap(0x7f5e83cb1000, 25258 <unfinished ...>
+[pid 39420] <... prlimit64 resumed>{rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+[pid 39421] <... munmap resumed>)       = 0
+[pid 39420] munmap(0x7f63f4eef000, 25258 <unfinished ...>
+[pid 39421] getrandom( <unfinished ...>
+[pid 39420] <... munmap resumed>)       = 0
+[pid 39421] <... getrandom resumed>"\x96\x93\xe4\x42\x06\x7f\x20\xf0", 8, GRND_NONBLOCK) = 8
+[pid 39420] getrandom( <unfinished ...>
+[pid 39421] brk(NULL <unfinished ...>
+[pid 39420] <... getrandom resumed>"\xe0\x7c\x11\xa7\x85\x1a\xff\x02", 8, GRND_NONBLOCK) = 8
+[pid 39421] <... brk resumed>)          = 0x1957000
+[pid 39420] brk(NULL <unfinished ...>
+[pid 39421] brk(0x1978000 <unfinished ...>
+[pid 39420] <... brk resumed>)          = 0x16ea000
+[pid 39421] <... brk resumed>)          = 0x1978000
+[pid 39420] brk(0x170b000 <unfinished ...>
+[pid 39421] openat(AT_FDCWD, "boba", O_WRONLY|O_CREAT|O_TRUNC, 0666 <unfinished ...>
+[pid 39420] <... brk resumed>)          = 0x170b000
+[pid 39420] openat(AT_FDCWD, "biba", O_WRONLY|O_CREAT|O_TRUNC, 0666 <unfinished ...>
+[pid 39421] <... openat resumed>)       = 3
+[pid 39421] newfstatat(0, "", {st_mode=S_IFIFO|0600, st_size=0, ...}, AT_EMPTY_PATH) = 0
+[pid 39421] read(0,  <unfinished ...>
+[pid 39420] <... openat resumed>)       = 3
+[pid 39420] newfstatat(0, "", {st_mode=S_IFIFO|0600, st_size=0, ...}, AT_EMPTY_PATH) = 0
+[pid 39420] read(0, "\n", 4096)         = 1
+[pid 39420] newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+[pid 39420] read(0, sasasasasasasasasas
+ <unfinished ...>
+[pid 39369] <... read resumed>"sasasasasasasasasas\n", 1024) = 20
+[pid 39369] write(4, "sasasasasasasasasas\n", 20) = 20
+[pid 39420] <... read resumed>"sasasasasasasasasas\n", 4096) = 20
+[pid 39369] read(0,  <unfinished ...>
+[pid 39420] read(0, ababababababaaba
+ <unfinished ...>
+[pid 39369] <... read resumed>"ababababababaaba\n", 1024) = 17
+[pid 39369] write(4, "ababababababaaba\n", 17) = 17
+[pid 39420] <... read resumed>"ababababababaaba\n", 4096) = 17
+[pid 39369] read(0,  <unfinished ...>
+[pid 39420] read(0, lolololo
+ <unfinished ...>
+[pid 39369] <... read resumed>"lolololo\n", 1024) = 9
+[pid 39369] write(4, "lolololo\n", 9)   = 9
+[pid 39420] <... read resumed>"lolololo\n", 4096) = 9
+[pid 39369] read(0,  <unfinished ...>
+[pid 39420] read(0, kkkkkkkk
+ <unfinished ...>
+[pid 39369] <... read resumed>"kkkkkkkk\n", 1024) = 9
+[pid 39369] write(4, "kkkkkkkk\n", 9)   = 9
+[pid 39420] <... read resumed>"kkkkkkkk\n", 4096) = 9
+[pid 39369] read(0,  <unfinished ...>
+[pid 39420] read(0,  <unfinished ...>
+[pid 39369] <... read resumed>"", 1024) = 0
+[pid 39369] close(4)                    = 0
+[pid 39420] <... read resumed>"", 4096) = 0
+[pid 39369] close(6)                    = 0
+[pid 39421] <... read resumed>"", 4096) = 0
+[pid 39369] wait4(39420,  <unfinished ...>
+[pid 39420] write(3, "\nssssssssss\nbbbbbbb\nllll\nkkkkkkk"..., 34 <unfinished ...>
+[pid 39421] close(3 <unfinished ...>
+[pid 39420] <... write resumed>)        = 34
+[pid 39420] close(3 <unfinished ...>
+[pid 39421] <... close resumed>)        = 0
+[pid 39421] exit_group(0)               = ?
+[pid 39420] <... close resumed>)        = 0
+[pid 39420] exit_group(0)               = ?
+[pid 39421] +++ exited with 0 +++
+[pid 39369] <... wait4 resumed>NULL, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set)
+[pid 39420] +++ exited with 0 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=39421, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+wait4(39420, NULL, 0, NULL)             = 39420
+wait4(39421, NULL, 0, NULL)             = 39421
+write(1, "\320\222\321\201\320\265 \320\277\321\200\320\276\321\206\320\265\321\201\321\201\321\213 \320\267\320\260\320\262\320\265"..., 44Все процессы завершены.
+) = 44
+exit_group(0)                           = ?
++++ exited with 0 +++

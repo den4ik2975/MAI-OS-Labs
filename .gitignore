@@ -1,0 +1,27 @@
+/cmake-build-release/
+/.devcontainer/
+/build/
+/exportToHTML/
+
+# Игнорировать файлы и папки, создаваемые CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Игнорировать файлы, создаваемые компилятором
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Игнорировать файлы, создаваемые IDE
+.vscode/
+.idea/
+.cache
+*.user
+
+# Игнорировать временные файлы
+*~
+*.swp

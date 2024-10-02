@@ -1,0 +1,20 @@
+root@d1282f6d624c:/IdeaProjects/MAI_OS_Labs/build# ./Lab1_exe
+Введите имя файла для child1: biba
+Введите имя файла для child2: boba
+Введите строки (Ctrl+D для завершения):
+asasasasasaasasasa
+bobobobobobobob
+iiiiiiiiii
+llllllllllll
+ufo
+ihatec
+Все процессы завершены.
+root@d1282f6d624c:/IdeaProjects/MAI_OS_Labs/build# cat < biba
+
+bbbbbbbb
+llllllllllll
+f
+htc
+root@d1282f6d624c:/IdeaProjects/MAI_OS_Labs/build# cat < boba
+ssssssss
+
