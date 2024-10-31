@@ -51,8 +51,8 @@ void* bitonicMerge(void* arg) {
         ThreadData right_data = {data->arr, low + k, k, dir};
 
         pthread_mutex_lock(&thread_count_mutex);
-        if (active_threads + 2 <= max_threads) {
-            active_threads += 2;
+        if (active_threads + 1 <= max_threads) {
+            active_threads += 1;
             pthread_mutex_unlock(&thread_count_mutex);
 
             pthread_t thread;
@@ -61,7 +61,7 @@ void* bitonicMerge(void* arg) {
             pthread_join(thread, nullptr);
 
             pthread_mutex_lock(&thread_count_mutex);
-            active_threads -= 2;
+            active_threads -= 1;
             pthread_mutex_unlock(&thread_count_mutex);
         } else {
             pthread_mutex_unlock(&thread_count_mutex);
@@ -114,7 +114,7 @@ void* bitonicSort(void* arg) {
 }
 
 
-std::chrono::duration<double> make_calculations(int n, int max_threads) {
+int make_calculations(int n, int max_threads) {
     thread_pool_size = max_threads;
     thread_pool = new pthread_t[thread_pool_size];
 
@@ -123,8 +123,8 @@ std::chrono::duration<double> make_calculations(int n, int max_threads) {
         arr[i] = rand() % 1000;
     }
 
-//    std::cout << "Starting sorting array with length: " << n << "\n";
-//    std::cout << "Max threads: " << max_threads << "\n";
+    std::cout << "Starting sorting array with length: " << n << "\n";
+    std::cout << "Max threads: " << max_threads << "\n";
 
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -134,27 +134,28 @@ std::chrono::duration<double> make_calculations(int n, int max_threads) {
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration = end - start;
 
-//    std::cout << "Time taken: " << duration << " seconds\n";
+    std::cout << "Time taken: " << duration.count() << " seconds\n";
 
     for (int i = 1; i < n; i++) {
         if (arr[i] < arr[i-1]) {
             std::cout << "Sorting failed!\n";
-            return std::chrono::nanoseconds::zero();
+            return 0;
         }
     }
-//    std::cout << "Sorting successful!\n";
+    std::cout << "Sorting successful!\n";
 
     delete[] thread_pool;
-    return duration;
+    return 0;
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {  // Теперь нам нужен только размер массива
-        std::cerr << "Usage: " << argv[0] << " <array_size>\n";
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <array_size> <max_threads>\n";
         return 1;
     }
 
     int n = std::atoi(argv[1]);
+    max_threads = std::atoi(argv[2]);
 
     // Размер массива должен быть степенью 2
     if ((n & (n - 1)) != 0) {
@@ -162,18 +163,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::cout << '[';
+    make_calculations(n, max_threads);
 
-    for (int thread_count = 1; thread_count <= 64; thread_count++) {
-        max_threads = thread_count;  // Обновляем глобальную переменную
-        std::chrono::duration<double> res = std::chrono::nanoseconds::zero();
-
-        for (int i = 0; i < 5; i++) {
-            res += make_calculations(n, max_threads);
-        }
-        std::cout << (res / 5).count() << ", ";
-    }
-    std::cout << ']';
     return 0;
 }
 

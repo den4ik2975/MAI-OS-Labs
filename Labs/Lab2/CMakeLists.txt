@@ -6,9 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=maybe-uninitialized")
 
-add_executable(${PROJECT_NAME}_exe src/main.cpp
-        src/test.cpp
-)
+add_executable(${PROJECT_NAME}_exe src/main.cpp)
 
 
 set_target_properties(${PROJECT_NAME}_exe PROPERTIES
