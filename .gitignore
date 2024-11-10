@@ -1,6 +1,5 @@
-/cmake-build-release/
 /.devcontainer/
-/build/
+/builds/
 /exportToHTML/
 
 # Игнорировать файлы и папки, создаваемые CMake
