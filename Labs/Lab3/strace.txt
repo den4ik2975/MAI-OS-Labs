@@ -1,0 +1,850 @@
+29663 execve("./parent", ["./parent"], 0x7ffd86804068 /* 32 vars */) = 0
+29663 brk(NULL)                         = 0x56362b689000
+29663 arch_prctl(0x3001 /* ARCH_??? */, 0x7ffeb9fa4d60) = -1 EINVAL (Invalid argument)
+29663 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f707e1a2000
+29663 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+29663 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+29663 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=20627, ...}, AT_EMPTY_PATH) = 0
+29663 mmap(NULL, 20627, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f707e19c000
+29663 close(3)                          = 0
+29663 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+29663 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+29663 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+29663 pread64(3, "\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+29663 pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0I\17\357\204\3$\f\221\2039x\324\224\323\236S"..., 68, 896) = 68
+29663 newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+29663 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+29663 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f707df73000
+29663 mprotect(0x7f707df9b000, 2023424, PROT_NONE) = 0
+29663 mmap(0x7f707df9b000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f707df9b000
+29663 mmap(0x7f707e130000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bd000) = 0x7f707e130000
+29663 mmap(0x7f707e189000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x215000) = 0x7f707e189000
+29663 mmap(0x7f707e18f000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f707e18f000
+29663 close(3)                          = 0
+29663 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f707df70000
+29663 arch_prctl(ARCH_SET_FS, 0x7f707df70740) = 0
+29663 set_tid_address(0x7f707df70a10)   = 29663
+29663 set_robust_list(0x7f707df70a20, 24) = 0
+29663 rseq(0x7f707df710e0, 0x20, 0, 0x53053053) = 0
+29663 mprotect(0x7f707e189000, 16384, PROT_READ) = 0
+29663 mprotect(0x56361f2d0000, 4096, PROT_READ) = 0
+29663 mprotect(0x7f707e1dc000, 8192, PROT_READ) = 0
+29663 prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+29663 munmap(0x7f707e19c000, 20627)     = 0
+29663 getrandom("\x07\xd4\xa0\x53\x10\x7c\xa7\xa6", 8, GRND_NONBLOCK) = 8
+29663 newfstatat(AT_FDCWD, "/dev/shm/sem.9hShcK", 0x7ffeb9fa4470, AT_SYMLINK_NOFOLLOW) = -1 ENOENT (No such file or directory)
+29663 openat(AT_FDCWD, "/dev/shm/sem.9hShcK", O_RDWR|O_CREAT|O_EXCL, 0666) = 3
+29663 write(3, "\1\0\0\0\0\0\0\0\200\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 32) = 32
+29663 mmap(NULL, 32, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f707e1db000
+29663 link("/dev/shm/sem.9hShcK", "/dev/shm/sem.mysem1") = 0
+29663 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=32, ...}, AT_EMPTY_PATH) = 0
+29663 getrandom("\x4f\xb4\x05\xdd\xb8\xc5\xf2\x4b", 8, GRND_NONBLOCK) = 8
+29663 brk(NULL)                         = 0x56362b689000
+29663 brk(0x56362b6aa000)               = 0x56362b6aa000
+29663 unlink("/dev/shm/sem.9hShcK")     = 0
+29663 close(3)                          = 0
+29663 getrandom("\x26\x0f\x56\x99\xe8\x8c\xe8\x3b", 8, GRND_NONBLOCK) = 8
+29663 newfstatat(AT_FDCWD, "/dev/shm/sem.2Ski2i", 0x7ffeb9fa4470, AT_SYMLINK_NOFOLLOW) = -1 ENOENT (No such file or directory)
+29663 openat(AT_FDCWD, "/dev/shm/sem.2Ski2i", O_RDWR|O_CREAT|O_EXCL, 0666) = 3
+29663 write(3, "\1\0\0\0\0\0\0\0\200\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 32) = 32
+29663 mmap(NULL, 32, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f707e1a1000
+29663 link("/dev/shm/sem.2Ski2i", "/dev/shm/sem.mysem2") = 0
+29663 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=32, ...}, AT_EMPTY_PATH) = 0
+29663 unlink("/dev/shm/sem.2Ski2i")     = 0
+29663 close(3)                          = 0
+29663 openat(AT_FDCWD, "/tmp/mapped_file1", O_RDWR|O_CREAT|O_TRUNC, 0666) = 3
+29663 ftruncate(3, 100016)              = 0
+29663 close(3)                          = 0
+29663 openat(AT_FDCWD, "/tmp/mapped_file2", O_RDWR|O_CREAT|O_TRUNC, 0666) = 3
+29663 ftruncate(3, 100016)              = 0
+29663 close(3)                          = 0
+29663 openat(AT_FDCWD, "/tmp/mapped_file1", O_RDWR) = 3
+29663 openat(AT_FDCWD, "/tmp/mapped_file2", O_RDWR) = 4
+29663 mmap(NULL, 100016, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f707df57000
+29663 mmap(NULL, 100016, PROT_READ|PROT_WRITE, MAP_SHARED, 4, 0) = 0x7f707df3e000
+29663 newfstatat(1, "", {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x3), ...}, AT_EMPTY_PATH) = 0
+29663 newfstatat(0, "", {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x3), ...}, AT_EMPTY_PATH) = 0
+29663 write(1, "Enter filename for child1: ", 27) = 27
+29663 read(0, "aboba\n", 1024)          = 6
+29663 write(1, "Enter filename for child2: ", 27) = 27
+29663 read(0, "abiba\n", 1024)          = 6
+29663 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f707df70a10) = 29668
+29668 set_robust_list(0x7f707df70a20, 24 <unfinished ...>
+29663 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD <unfinished ...>
+29668 <... set_robust_list resumed>)    = 0
+29668 execve("./child1", ["child1", "aboba"], 0x7ffeb9fa4f38 /* 32 vars */ <unfinished ...>
+29663 <... clone resumed>, child_tidptr=0x7f707df70a10) = 29669
+29669 set_robust_list(0x7f707df70a20, 24 <unfinished ...>
+29663 write(1, "Enter lines (Ctrl+D to finish):\n", 32 <unfinished ...>
+29669 <... set_robust_list resumed>)    = 0
+29663 <... write resumed>)              = 32
+29669 execve("./child2", ["child2", "abiba"], 0x7ffeb9fa4f38 /* 32 vars */ <unfinished ...>
+29663 read(0,  <unfinished ...>
+29668 <... execve resumed>)             = 0
+29668 brk(NULL)                         = 0x563d749b0000
+29669 <... execve resumed>)             = 0
+29669 brk(NULL <unfinished ...>
+29668 arch_prctl(0x3001 /* ARCH_??? */, 0x7ffc44aa0ca0 <unfinished ...>
+29669 <... brk resumed>)                = 0x55cd6fd91000
+29668 <... arch_prctl resumed>)         = -1 EINVAL (Invalid argument)
+29669 arch_prctl(0x3001 /* ARCH_??? */, 0x7fffbda76c40 <unfinished ...>
+29668 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+29669 <... arch_prctl resumed>)         = -1 EINVAL (Invalid argument)
+29668 <... mmap resumed>)               = 0x7f3cfb8dd000
+29669 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+29668 access("/etc/ld.so.preload", R_OK <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3bb2f000
+29668 <... access resumed>)             = -1 ENOENT (No such file or directory)
+29669 access("/etc/ld.so.preload", R_OK <unfinished ...>
+29668 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+29669 <... access resumed>)             = -1 ENOENT (No such file or directory)
+29668 <... openat resumed>)             = 5
+29669 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+29668 newfstatat(5, "",  <unfinished ...>
+29669 <... openat resumed>)             = 5
+29668 <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=20627, ...}, AT_EMPTY_PATH) = 0
+29669 newfstatat(5, "",  <unfinished ...>
+29668 mmap(NULL, 20627, PROT_READ, MAP_PRIVATE, 5, 0 <unfinished ...>
+29669 <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=20627, ...}, AT_EMPTY_PATH) = 0
+29668 <... mmap resumed>)               = 0x7f3cfb8d7000
+29669 mmap(NULL, 20627, PROT_READ, MAP_PRIVATE, 5, 0 <unfinished ...>
+29668 close(5 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3bb29000
+29668 <... close resumed>)              = 0
+29669 close(5 <unfinished ...>
+29668 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+29669 <... close resumed>)              = 0
+29668 <... openat resumed>)             = 5
+29669 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+29668 read(5,  <unfinished ...>
+29669 <... openat resumed>)             = 5
+29669 read(5,  <unfinished ...>
+29668 <... read resumed>"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+29669 <... read resumed>"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+29668 pread64(5,  <unfinished ...>
+29669 pread64(5,  <unfinished ...>
+29668 <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+29669 <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+29668 pread64(5,  <unfinished ...>
+29669 pread64(5,  <unfinished ...>
+29668 <... pread64 resumed>"\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+29669 <... pread64 resumed>"\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+29669 pread64(5,  <unfinished ...>
+29668 pread64(5,  <unfinished ...>
+29669 <... pread64 resumed>"\4\0\0\0\24\0\0\0\3\0\0\0GNU\0I\17\357\204\3$\f\221\2039x\324\224\323\236S"..., 68, 896) = 68
+29668 <... pread64 resumed>"\4\0\0\0\24\0\0\0\3\0\0\0GNU\0I\17\357\204\3$\f\221\2039x\324\224\323\236S"..., 68, 896) = 68
+29669 newfstatat(5, "",  <unfinished ...>
+29668 newfstatat(5, "",  <unfinished ...>
+29669 <... newfstatat resumed>{st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+29668 <... newfstatat resumed>{st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+29669 pread64(5,  <unfinished ...>
+29668 pread64(5,  <unfinished ...>
+29669 <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+29668 <... pread64 resumed>"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+29669 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 5, 0 <unfinished ...>
+29668 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 5, 0 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3b900000
+29668 <... mmap resumed>)               = 0x7f3cfb6ae000
+29669 mprotect(0x7f8f3b928000, 2023424, PROT_NONE <unfinished ...>
+29668 mprotect(0x7f3cfb6d6000, 2023424, PROT_NONE <unfinished ...>
+29669 <... mprotect resumed>)           = 0
+29668 <... mprotect resumed>)           = 0
+29669 mmap(0x7f8f3b928000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 5, 0x28000 <unfinished ...>
+29668 mmap(0x7f3cfb6d6000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 5, 0x28000 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3b928000
+29668 <... mmap resumed>)               = 0x7f3cfb6d6000
+29669 mmap(0x7f8f3babd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 5, 0x1bd000 <unfinished ...>
+29668 mmap(0x7f3cfb86b000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 5, 0x1bd000 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3babd000
+29668 <... mmap resumed>)               = 0x7f3cfb86b000
+29669 mmap(0x7f8f3bb16000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 5, 0x215000 <unfinished ...>
+29668 mmap(0x7f3cfb8c4000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 5, 0x215000 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3bb16000
+29668 <... mmap resumed>)               = 0x7f3cfb8c4000
+29669 mmap(0x7f8f3bb1c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+29668 mmap(0x7f3cfb8ca000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3bb1c000
+29668 <... mmap resumed>)               = 0x7f3cfb8ca000
+29669 close(5 <unfinished ...>
+29668 close(5 <unfinished ...>
+29669 <... close resumed>)              = 0
+29668 <... close resumed>)              = 0
+29669 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+29668 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3b8fd000
+29668 <... mmap resumed>)               = 0x7f3cfb6ab000
+29669 arch_prctl(ARCH_SET_FS, 0x7f8f3b8fd740 <unfinished ...>
+29668 arch_prctl(ARCH_SET_FS, 0x7f3cfb6ab740 <unfinished ...>
+29669 <... arch_prctl resumed>)         = 0
+29668 <... arch_prctl resumed>)         = 0
+29669 set_tid_address(0x7f8f3b8fda10 <unfinished ...>
+29668 set_tid_address(0x7f3cfb6aba10 <unfinished ...>
+29669 <... set_tid_address resumed>)    = 29669
+29668 <... set_tid_address resumed>)    = 29668
+29669 set_robust_list(0x7f8f3b8fda20, 24 <unfinished ...>
+29668 set_robust_list(0x7f3cfb6aba20, 24 <unfinished ...>
+29669 <... set_robust_list resumed>)    = 0
+29668 <... set_robust_list resumed>)    = 0
+29669 rseq(0x7f8f3b8fe0e0, 0x20, 0, 0x53053053 <unfinished ...>
+29668 rseq(0x7f3cfb6ac0e0, 0x20, 0, 0x53053053 <unfinished ...>
+29669 <... rseq resumed>)               = 0
+29668 <... rseq resumed>)               = 0
+29669 mprotect(0x7f8f3bb16000, 16384, PROT_READ <unfinished ...>
+29668 mprotect(0x7f3cfb8c4000, 16384, PROT_READ <unfinished ...>
+29669 <... mprotect resumed>)           = 0
+29668 <... mprotect resumed>)           = 0
+29669 mprotect(0x55cd47753000, 4096, PROT_READ <unfinished ...>
+29668 mprotect(0x563d6e501000, 4096, PROT_READ <unfinished ...>
+29669 <... mprotect resumed>)           = 0
+29668 <... mprotect resumed>)           = 0
+29669 mprotect(0x7f8f3bb69000, 8192, PROT_READ <unfinished ...>
+29668 mprotect(0x7f3cfb917000, 8192, PROT_READ <unfinished ...>
+29669 <... mprotect resumed>)           = 0
+29668 <... mprotect resumed>)           = 0
+29669 prlimit64(0, RLIMIT_STACK, NULL,  <unfinished ...>
+29668 prlimit64(0, RLIMIT_STACK, NULL,  <unfinished ...>
+29669 <... prlimit64 resumed>{rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+29668 <... prlimit64 resumed>{rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+29669 munmap(0x7f8f3bb29000, 20627 <unfinished ...>
+29668 munmap(0x7f3cfb8d7000, 20627 <unfinished ...>
+29669 <... munmap resumed>)             = 0
+29668 <... munmap resumed>)             = 0
+29669 openat(AT_FDCWD, "/dev/shm/sem.mysem1", O_RDWR|O_NOFOLLOW <unfinished ...>
+29668 openat(AT_FDCWD, "/dev/shm/sem.mysem1", O_RDWR|O_NOFOLLOW <unfinished ...>
+29669 <... openat resumed>)             = 5
+29668 <... openat resumed>)             = 5
+29669 newfstatat(5, "",  <unfinished ...>
+29668 newfstatat(5, "",  <unfinished ...>
+29669 <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=32, ...}, AT_EMPTY_PATH) = 0
+29668 <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=32, ...}, AT_EMPTY_PATH) = 0
+29669 getrandom( <unfinished ...>
+29668 getrandom( <unfinished ...>
+29669 <... getrandom resumed>"\xf2\x52\xa1\xfe\x1b\x8b\xe4\x0a", 8, GRND_NONBLOCK) = 8
+29668 <... getrandom resumed>"\x00\x79\x19\x85\xf3\x6a\xd7\x6e", 8, GRND_NONBLOCK) = 8
+29669 brk(NULL <unfinished ...>
+29668 brk(NULL <unfinished ...>
+29669 <... brk resumed>)                = 0x55cd6fd91000
+29668 <... brk resumed>)                = 0x563d749b0000
+29669 brk(0x55cd6fdb2000 <unfinished ...>
+29668 brk(0x563d749d1000 <unfinished ...>
+29669 <... brk resumed>)                = 0x55cd6fdb2000
+29668 <... brk resumed>)                = 0x563d749d1000
+29669 mmap(NULL, 32, PROT_READ|PROT_WRITE, MAP_SHARED, 5, 0 <unfinished ...>
+29668 mmap(NULL, 32, PROT_READ|PROT_WRITE, MAP_SHARED, 5, 0 <unfinished ...>
+29669 <... mmap resumed>)               = 0x7f8f3bb68000
+29669 close(5 <unfinished ...>
+29668 <... mmap resumed>)               = 0x7f3cfb916000
+29669 <... close resumed>)              = 0
+29668 close(5 <unfinished ...>
+29669 openat(AT_FDCWD, "/tmp/mapped_file1", O_RDWR <unfinished ...>
+29668 <... close resumed>)              = 0
+29669 <... openat resumed>)             = 5
+29668 openat(AT_FDCWD, "/tmp/mapped_file1", O_RDWR <unfinished ...>
+29669 newfstatat(5, "",  <unfinished ...>
+29668 <... openat resumed>)             = 5
+29669 <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=100016, ...}, AT_EMPTY_PATH) = 0
+29668 newfstatat(5, "",  <unfinished ...>
+29669 mmap(NULL, 100016, PROT_READ|PROT_WRITE, MAP_SHARED, 5, 0) = 0x7f8f3b8e4000
+29668 <... newfstatat resumed>{st_mode=S_IFREG|0644, st_size=100016, ...}, AT_EMPTY_PATH) = 0
+29669 openat(AT_FDCWD, "abiba", O_WRONLY|O_CREAT|O_TRUNC, 0666 <unfinished ...>
+29668 mmap(NULL, 100016, PROT_READ|PROT_WRITE, MAP_SHARED, 5, 0) = 0x7f3cfb692000
+29669 <... openat resumed>)             = 6
+29668 openat(AT_FDCWD, "aboba", O_WRONLY|O_CREAT|O_TRUNC, 0666 <unfinished ...>
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... openat resumed>)             = 6
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... read resumed>"abababaababqa\n", 1024) = 14
+29663 msync(0x7f707df57000, 100016, MS_SYNC) = 0
+29663 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 newfstatat(6, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+29668 msync(0x7f3cfb692000, 100016, MS_SYNC) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... clock_nanosleep resumed>NULL) = 0
+29663 read(0,  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... read resumed>"okokokook\n", 1024) = 10
+29663 msync(0x7f707df57000, 100016, MS_SYNC) = 0
+29663 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 newfstatat(6, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+29669 msync(0x7f8f3b8e4000, 100016, MS_SYNC) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... clock_nanosleep resumed>NULL) = 0
+29663 read(0,  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000}, NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29668 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... read resumed>"ihihihhi\n", 1024) = 9
+29663 msync(0x7f707df57000, 100016, MS_SYNC) = 0
+29663 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 msync(0x7f8f3b8e4000, 100016, MS_SYNC) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... clock_nanosleep resumed>NULL) = 0
+29663 read(0,  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+29663 <... read resumed>"", 1024)       = 0
+29663 msync(0x7f707df57000, 100016, MS_SYNC) = 0
+29663 msync(0x7f707df3e000, 100016, MS_SYNC) = 0
+29663 wait4(29668,  <unfinished ...>
+29669 <... clock_nanosleep resumed>NULL) = 0
+29669 write(6, "kkkk\nhhhh\n", 10)      = 10
+29669 close(6)                          = 0
+29669 munmap(0x7f8f3b8e4000, 100016)    = 0
+29669 close(5)                          = 0
+29669 munmap(0x7f8f3bb68000, 32)        = 0
+29669 exit_group(0)                     = ?
+29669 +++ exited with 0 +++
+29663 <... wait4 resumed>NULL, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set)
+29663 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=29669, si_uid=1000, si_status=0, si_utime=0, si_stime=2} ---
+29663 wait4(29668,  <unfinished ...>
+29668 <... clock_nanosleep resumed>NULL) = 0
+29668 write(6, "bbbbbq\n", 7)           = 7
+29668 close(6)                          = 0
+29668 munmap(0x7f3cfb692000, 100016)    = 0
+29668 close(5)                          = 0
+29668 munmap(0x7f3cfb916000, 32)        = 0
+29668 exit_group(0)                     = ?
+29668 +++ exited with 0 +++
+29663 <... wait4 resumed>NULL, 0, NULL) = 29668
+29663 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=29668, si_uid=1000, si_status=0, si_utime=0, si_stime=2} ---
+29663 wait4(29669, NULL, 0, NULL)       = 29669
+29663 munmap(0x7f707df57000, 100016)    = 0
+29663 munmap(0x7f707df3e000, 100016)    = 0
+29663 close(3)                          = 0
+29663 close(4)                          = 0
+29663 munmap(0x7f707e1db000, 32)        = 0
+29663 munmap(0x7f707e1a1000, 32)        = 0
+29663 unlink("/dev/shm/sem.mysem1")     = 0
+29663 unlink("/dev/shm/sem.mysem2")     = 0
+29663 unlink("/tmp/mapped_file1")       = 0
+29663 unlink("/tmp/mapped_file2")       = 0
+29663 write(1, "All processes completed.\n", 25) = 25
+29663 exit_group(0)                     = ?
+29663 +++ exited with 0 +++
