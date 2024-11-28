@@ -1,22 +1,23 @@
-#include <iostream>
-#include <cstring>
-#include <cstdlib>
+// parent.cpp
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <ctime>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/mman.h>
 #include <sys/wait.h>
+#include <semaphore.h>
 #include "common.h"
 
-void createMappedFile(const char* filename) {
+void prepareFileForMapping(const char* filename) {
     int fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0666);
     if (fd == -1) {
         perror("Error creating mapped file");
         exit(1);
     }
 
-    // Устанавливаем размер файла
-    if (ftruncate(fd, sizeof(SharedData)) == -1) {
+    if (ftruncate(fd, sizeof(struct SharedData)) == -1) {
         perror("Error setting file size");
         close(fd);
         exit(1);
@@ -27,11 +28,18 @@ void createMappedFile(const char* filename) {
 int main() {
     std::srand(std::time(nullptr));
 
-    // Создаем mapped files
-    createMappedFile(MAPPED_FILE1);
-    createMappedFile(MAPPED_FILE2);
+    // Создаем семафоры
+    sem_t *sem1 = sem_open(SEM_NAME1, O_CREAT | O_EXCL, 0666, 1);
+    sem_t *sem2 = sem_open(SEM_NAME2, O_CREAT | O_EXCL, 0666, 1);
 
-    // Открываем mapped files
+    if (sem1 == SEM_FAILED || sem2 == SEM_FAILED) {
+        perror("Error creating semaphores");
+        exit(1);
+    }
+
+    prepareFileForMapping(MAPPED_FILE1);
+    prepareFileForMapping(MAPPED_FILE2);
+
     int fd1 = open(MAPPED_FILE1, O_RDWR);
     int fd2 = open(MAPPED_FILE2, O_RDWR);
     if (fd1 == -1 || fd2 == -1) {
@@ -39,11 +47,10 @@ int main() {
         exit(1);
     }
 
-    // Отображаем файлы в память
-    SharedData* shared1 = (SharedData*)mmap(NULL, sizeof(SharedData),
+    struct SharedData* shared1 = (struct SharedData*)mmap(NULL, sizeof(struct SharedData),
                                           PROT_READ | PROT_WRITE,
                                           MAP_SHARED, fd1, 0);
-    SharedData* shared2 = (SharedData*)mmap(NULL, sizeof(SharedData),
+    struct SharedData* shared2 = (struct SharedData*)mmap(NULL, sizeof(struct SharedData),
                                           PROT_READ | PROT_WRITE,
                                           MAP_SHARED, fd2, 0);
     if (shared1 == MAP_FAILED || shared2 == MAP_FAILED) {
@@ -51,21 +58,18 @@ int main() {
         exit(1);
     }
 
-    // Инициализируем shared memory
     shared1->size = 0;
-    shared1->done = false;
+    shared1->done = 0;
     shared2->size = 0;
-    shared2->done = false;
+    shared2->done = 0;
 
-    // Получаем имена выходных файлов
     char filename1[256], filename2[256];
-    std::cout << "Enter filename for child1: ";
-    std::cin >> filename1;
-    std::cout << "Enter filename for child2: ";
-    std::cin >> filename2;
-    std::cin.ignore();
+    printf("Enter filename for child1: ");
+    scanf("%255s", filename1);
+    printf("Enter filename for child2: ");
+    scanf("%255s", filename2);
+    getchar();
 
-    // Создаем дочерние процессы
     pid_t child1 = fork();
     if (child1 == -1) {
         perror("Error creating first child");
@@ -88,47 +92,50 @@ int main() {
         exit(1);
     }
 
-    // Читаем ввод и распределяем между процессами
-    std::cout << "Enter lines (Ctrl+D to finish):\n";
+    printf("Enter lines (Ctrl+D to finish):\n");
     char line[MAX_LINE];
-    while (std::cin.getline(line, MAX_LINE)) {
-        SharedData* target;
-        if (static_cast<double>(rand()) / RAND_MAX < PROB_FILE1) {
+    while (fgets(line, MAX_LINE, stdin) != NULL) {
+        struct SharedData* target;
+        sem_t* current_sem;
+
+        if ((double)rand() / RAND_MAX < PROB_FILE1) {
             target = shared1;
+            current_sem = sem1;
         } else {
             target = shared2;
+            current_sem = sem2;
         }
 
-        // Ждем, пока предыдущие данные будут обработаны
-        while (target->size > 0) {
-            usleep(1000);
-        }
-
+        sem_wait(current_sem);
         size_t len = strlen(line);
         strncpy(target->data, line, len);
-        target->data[len] = '\n';
-        target->size = len + 1;
-        msync(target, sizeof(SharedData), MS_SYNC);
+        target->size = len;
+        msync(target, sizeof(struct SharedData), MS_SYNC);
+        sem_post(current_sem);
+        usleep(1000);
     }
 
-    // Сигнализируем о завершении
-    shared1->done = true;
-    shared2->done = true;
-    msync(shared1, sizeof(SharedData), MS_SYNC);
-    msync(shared2, sizeof(SharedData), MS_SYNC);
+    shared1->done = 1;
+    shared2->done = 1;
+    msync(shared1, sizeof(struct SharedData), MS_SYNC);
+    msync(shared2, sizeof(struct SharedData), MS_SYNC);
 
-    // Ждем завершения дочерних процессов
     waitpid(child1, NULL, 0);
     waitpid(child2, NULL, 0);
 
-    // Очищаем ресурсы
-    munmap(shared1, sizeof(SharedData));
-    munmap(shared2, sizeof(SharedData));
+    munmap(shared1, sizeof(struct SharedData));
+    munmap(shared2, sizeof(struct SharedData));
     close(fd1);
     close(fd2);
+
+    sem_close(sem1);
+    sem_close(sem2);
+    sem_unlink(SEM_NAME1);
+    sem_unlink(SEM_NAME2);
+
     unlink(MAPPED_FILE1);
     unlink(MAPPED_FILE2);
 
-    std::cout << "All processes completed.\n";
+    printf("All processes completed.\n");
     return 0;
 }
