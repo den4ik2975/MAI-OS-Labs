@@ -79,7 +79,6 @@ int main(int argc, char* argv[]) {
             msync(shared, sizeof(struct SharedData), MS_SYNC);
         }
         sem_post(sem);
-        usleep(1000);
     }
 
     fclose(outFile);

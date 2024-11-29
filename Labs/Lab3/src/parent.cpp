@@ -112,7 +112,6 @@ int main() {
         target->size = len;
         msync(target, sizeof(struct SharedData), MS_SYNC);
         sem_post(current_sem);
-        usleep(1000);
     }
 
     shared1->done = 1;
