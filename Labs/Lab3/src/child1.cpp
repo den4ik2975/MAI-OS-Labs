@@ -68,18 +68,21 @@ int main(int argc, char* argv[]) {
 
     char buffer[MAX_LINE];
     while (!shared->done || shared->size > 0) {
-        sem_wait(sem);
+
         if (shared->size > 0) {
+            sem_wait(sem);
             strncpy(buffer, shared->data, shared->size);
             buffer[shared->size] = '\0';
             removeVowels(buffer);
             fprintf(outFile, "%s", buffer);
             shared->size = 0;
             msync(shared, sizeof(struct SharedData), MS_SYNC);
+        } else
+        {
+            continue;
         }
 
         sem_post(sem);
-        usleep(1000);
     }
 
     fclose(outFile);
