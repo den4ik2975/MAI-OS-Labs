@@ -1,0 +1,155 @@
+execve("./program2", ["./program2"], 0x7fff9c3e1ac0 /* 32 vars */) = 0
+brk(NULL)                               = 0x56424ff7a000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffc3333bc50) = -1 EINVAL (Invalid argument)
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f2c22c1f000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=20627, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 20627, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f2c22c19000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=2522584, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 2539968, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c229ac000
+mprotect(0x7f2c22a48000, 1830912, PROT_NONE) = 0
+mmap(0x7f2c22a48000, 1249280, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x9c000) = 0x7f2c22a48000
+mmap(0x7f2c22b79000, 577536, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1cd000) = 0x7f2c22b79000
+mmap(0x7f2c22c07000, 57344, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x25a000) = 0x7f2c22c07000
+mmap(0x7f2c22c15000, 12736, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f2c22c15000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\237\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0 \0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0"..., 48, 848) = 48
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0I\17\357\204\3$\f\221\2039x\324\224\323\236S"..., 68, 896) = 68
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=2220400, ...}, AT_EMPTY_PATH) = 0
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c22783000
+mprotect(0x7f2c227ab000, 2023424, PROT_NONE) = 0
+mmap(0x7f2c227ab000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7f2c227ab000
+mmap(0x7f2c22940000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bd000) = 0x7f2c22940000
+mmap(0x7f2c22999000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x215000) = 0x7f2c22999000
+mmap(0x7f2c2299f000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f2c2299f000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=940560, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 942344, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c2269c000
+mmap(0x7f2c226aa000, 507904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7f2c226aa000
+mmap(0x7f2c22726000, 372736, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x8a000) = 0x7f2c22726000
+mmap(0x7f2c22781000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe4000) = 0x7f2c22781000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=141896, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 144232, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c22678000
+mmap(0x7f2c2267b000, 110592, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7f2c2267b000
+mmap(0x7f2c22696000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e000) = 0x7f2c22696000
+mmap(0x7f2c2269a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x21000) = 0x7f2c2269a000
+close(3)                                = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f2c22676000
+arch_prctl(ARCH_SET_FS, 0x7f2c22677400) = 0
+set_tid_address(0x7f2c226776d0)         = 15656
+set_robust_list(0x7f2c226776e0, 24)     = 0
+rseq(0x7f2c22677da0, 0x20, 0, 0x53053053) = 0
+mprotect(0x7f2c22999000, 16384, PROT_READ) = 0
+mprotect(0x7f2c2269a000, 4096, PROT_READ) = 0
+mprotect(0x7f2c22781000, 4096, PROT_READ) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f2c22674000
+mprotect(0x7f2c22c07000, 45056, PROT_READ) = 0
+mprotect(0x564242cea000, 4096, PROT_READ) = 0
+mprotect(0x7f2c22c59000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0x7f2c22c19000, 20627)           = 0
+futex(0x7f2c22c157fc, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+getrandom("\x93\x27\xa9\xb2\xf4\xcb\x6c\xe2", 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0x56424ff7a000
+brk(0x56424ff9b000)                     = 0x56424ff9b000
+openat(AT_FDCWD, "./lib_pr2_1.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=15760, ...}, AT_EMPTY_PATH) = 0
+getcwd("/home/den4ik2975/CLionProjects/MAI_OS_Labs/Labs/Lab4/src", 128) = 57
+mmap(NULL, 16448, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c22c1a000
+mmap(0x7f2c22c1b000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7f2c22c1b000
+mmap(0x7f2c22c1c000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f2c22c1c000
+mmap(0x7f2c22c1d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f2c22c1d000
+close(3)                                = 0
+mprotect(0x7f2c22c1d000, 4096, PROT_READ) = 0
+newfstatat(1, "", {st_mode=S_IFREG|0644, st_size=6016, ...}, AT_EMPTY_PATH) = 0
+write(1, "Library is loaded\nInput program "..., 113Library is loaded
+Input program code:
+ 0 -> Library switch
+ 1 -> Calculate integral
+ 2 -> Translation
+-1 -> Exit
+) = 113
+newfstatat(0, "", {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x2), ...}, AT_EMPTY_PATH) = 0
+read(0, "2\n", 1024)                    = 2
+write(1, "Enter x: ", 9Enter x: )                = 9
+read(0, "577\n", 1024)                  = 4
+write(1, "Translationing to binary\nResult "..., 143Translationing to binary
+Result is: 1001000001
+
+Input program code:
+ 0 -> Library switch
+ 1 -> Calculate integral
+ 2 -> Translation
+-1 -> Exit
+) = 143
+read(0, "0\n", 1024)                    = 2
+munmap(0x7f2c22c1a000, 16448)           = 0
+openat(AT_FDCWD, "./lib_pr2_2.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=15736, ...}, AT_EMPTY_PATH) = 0
+getcwd("/home/den4ik2975/CLionProjects/MAI_OS_Labs/Labs/Lab4/src", 128) = 57
+mmap(NULL, 16448, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c22c1a000
+mmap(0x7f2c22c1b000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7f2c22c1b000
+mmap(0x7f2c22c1c000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f2c22c1c000
+mmap(0x7f2c22c1d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f2c22c1d000
+close(3)                                = 0
+mprotect(0x7f2c22c1d000, 4096, PROT_READ) = 0
+write(1, "Library switched succesfully!\nIn"..., 125Library switched succesfully!
+Input program code:
+ 0 -> Library switch
+ 1 -> Calculate integral
+ 2 -> Translation
+-1 -> Exit
+) = 125
+read(0, "2\n", 1024)                    = 2
+write(1, "Enter x: ", 9Enter x: )                = 9
+read(0, "577\n", 1024)                  = 4
+write(1, "Translationing to trinity\nResult"..., 140Translationing to trinity
+Result is: 210101
+
+Input program code:
+ 0 -> Library switch
+ 1 -> Calculate integral
+ 2 -> Translation
+-1 -> Exit
+) = 140
+read(0, "0\n", 1024)                    = 2
+munmap(0x7f2c22c1a000, 16448)           = 0
+openat(AT_FDCWD, "./lib_pr2_1.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=15760, ...}, AT_EMPTY_PATH) = 0
+getcwd("/home/den4ik2975/CLionProjects/MAI_OS_Labs/Labs/Lab4/src", 128) = 57
+mmap(NULL, 16448, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2c22c1a000
+mmap(0x7f2c22c1b000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7f2c22c1b000
+mmap(0x7f2c22c1c000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f2c22c1c000
+mmap(0x7f2c22c1d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f2c22c1d000
+close(3)                                = 0
+mprotect(0x7f2c22c1d000, 4096, PROT_READ) = 0
+write(1, "Library switched succesfully!\nIn"..., 125Library switched succesfully!
+Input program code:
+ 0 -> Library switch
+ 1 -> Calculate integral
+ 2 -> Translation
+-1 -> Exit
+) = 125
+read(0, "-1\n", 1024)                   = 3
+munmap(0x7f2c22c1a000, 16448)           = 0
+write(1, "Exit\n", 5Exit
+)                   = 5
+lseek(0, -1, SEEK_CUR)                  = -1 ESPIPE (Illegal seek)
+exit_group(0)                           = ?
++++ exited with 0 +++
