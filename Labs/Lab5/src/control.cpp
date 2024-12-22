@@ -6,12 +6,15 @@ private:
     std::unordered_set<int> node_ids_;
     std::list<Message> pending_messages_;
     std::list<Node> children_;
+    std::chrono::milliseconds heartbeat = std::chrono::milliseconds::zero();
+    std::map<int, std::chrono::system_clock::time_point> beat_tracker;
 
     void handle_child_message(const Message& message) {
         switch (message.command) {
             case CommandType::Create:
                 node_ids_.insert(message.id);
-                std::cout << "Ok: " << message.num << std::endl;
+                beat_tracker[message.id] = now();
+                std::cout << "Ok: " << message.add_data << std::endl;
                 remove_pending_message(CommandType::Create, message.id);
                 break;
 
@@ -21,7 +24,7 @@ private:
                 break;
 
             case CommandType::ExecErr:
-                std::cout << "Ok: " << message.id << " '" << message.st << "' not found" << std::endl;
+                std::cout << "Ok: " << message.id << " '" << message.val << "' not found" << std::endl;
                 remove_pending_message(CommandType::ExecFnd, message.id);
                 break;
 
@@ -31,9 +34,12 @@ private:
                 break;
 
             case CommandType::ExecFnd:
-                std::cout << "Ok: " << message.id << " '" << message.st << "' " << message.num << std::endl;
+                std::cout << "Ok: " << message.id << " '" << message.val << "' " << message.add_data << std::endl;
                 remove_pending_message(CommandType::ExecFnd, message.id);
                 break;
+            case CommandType::HeartBeat:
+                std::cout << "Ok: " << message.id << " Got beat" << std::endl;
+                beat_tracker[message.id] = now();
         }
     }
 
@@ -70,7 +76,7 @@ private:
         auto it = std::find_if(pending_messages_.begin(), pending_messages_.end(),
             [cmd, id](const Message& m) {
                 return (m.command == cmd && m.id == id) ||
-                    (m.command == cmd && m.command == CommandType::Create && m.num == id);
+                    (m.command == cmd && m.command == CommandType::Create && m.add_data == id);
             });
         if (it != pending_messages_.end()) {
             pending_messages_.erase(it);
@@ -131,6 +137,43 @@ private:
         }
     }
 
+    void handle_ping_command() {
+        int id;
+        std::cin >> id;
+        if (!node_ids_.count(id)) {
+            std::cout << "Error: Node with id " << id << " doesn't exist" << std::endl;
+        } else {
+            broadcast_message(Message(CommandType::Ping, id, 0));
+        }
+    }
+
+    void handle_heartbeat_command()
+    {
+        int time;
+        std::cin >> time;
+        heartbeat = std::chrono::milliseconds(time);
+        for (auto& [key, value] : beat_tracker)
+        {
+            value = now();
+        }
+
+        auto msg = Message(CommandType::HeartBeat, -1, time);
+        for (auto& child : children_) {
+            send_message(child, msg);
+        }
+    }
+
+    void check_beats() {
+        for (auto& [key, value] : beat_tracker) {
+            if (std::chrono::duration_cast<std::chrono::milliseconds>(
+                    now() - value).count() > 4 * heartbeat.count())
+            {
+                std::cout << "Node: " << key << " has no beat!" << std::endl;
+            }
+            value = now();
+        }
+    }
+
 public:
     Controller() {
         node_ids_.insert(-1);
@@ -149,6 +192,10 @@ public:
 
             check_pending_messages();
 
+            if (heartbeat > std::chrono::milliseconds::zero()) {
+                check_beats();
+            }
+
             if (!input_available()) {
                 continue;
             }
@@ -161,13 +208,11 @@ public:
                 handle_exec_command();
             }
             else if (command == "ping") {
-                int id;
-                std::cin >> id;
-                if (!node_ids_.count(id)) {
-                    std::cout << "Error: Node with id " << id << " doesn't exist" << std::endl;
-                } else {
-                    broadcast_message(Message(CommandType::Ping, id, 0));
-                }
+                handle_ping_command();
+            }
+            else if (command == "heartbeat")
+            {
+                handle_heartbeat_command();
             }
             else {
                 std::cout << "Error: Command doesn't exist!" << std::endl;

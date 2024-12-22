@@ -1,6 +1,7 @@
 /.devcontainer/
 /builds/
 /exportToHTML/
+/Labs/Lab5/build
 
 # Игнорировать файлы и папки, создаваемые CMake
 CMakeCache.txt

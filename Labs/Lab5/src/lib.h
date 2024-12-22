@@ -22,42 +22,43 @@ enum class CommandType : uint8_t {
     Ping = 2,
     ExecAdd = 3,
     ExecFnd = 4,
-    ExecErr = 5
+    ExecErr = 5,
+    HeartBeat = 6,
 };
 
 class Message {
 public:
     Message() = default;
 
-    Message(CommandType cmd, int id, int num)
+    Message(CommandType cmd, int id, int add_data)
         : command(cmd)
         , id(id)
-        , num(num)
+        , add_data(add_data)
         , sent_time(std::chrono::system_clock::now())
     {}
 
-    Message(CommandType cmd, int id, int num, const char* s)
+    Message(CommandType cmd, int id, int add_data, const char* s)
         : command(cmd)
         , id(id)
-        , num(num)
+        , add_data(add_data)
         , sent_time(std::chrono::system_clock::now())
     {
-        std::strncpy(st, s, sizeof(st) - 1);
-        st[sizeof(st) - 1] = '\0';
+        std::strncpy(val, s, sizeof(val) - 1);
+        val[sizeof(val) - 1] = '\0';
     }
 
     bool operator==(const Message& other) const {
         return command == other.command &&
                id == other.id &&
-               num == other.num &&
+               add_data == other.add_data &&
                sent_time == other.sent_time;
     }
 
     CommandType command{CommandType::None};
     int id{-1};
-    int num{-1};
+    int add_data{-1};
     std::chrono::system_clock::time_point sent_time;
-    char st[30]{};
+    char val[30]{};
 };
 
 class Node {
