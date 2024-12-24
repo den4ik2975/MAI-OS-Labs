@@ -137,44 +137,44 @@ control/fast:
 .PHONY : control/fast
 
 #=============================================================================
-# Target rules for targets named lab5_7_lib
+# Target rules for targets named common_lib
 
 # Build rule for target.
-lab5_7_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lab5_7_lib
-.PHONY : lab5_7_lib
+common_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 common_lib
+.PHONY : common_lib
 
 # fast build rule for target.
-lab5_7_lib/fast:
-	$(MAKE) -f CMakeFiles/lab5_7_lib.dir/build.make CMakeFiles/lab5_7_lib.dir/build
-.PHONY : lab5_7_lib/fast
+common_lib/fast:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/build
+.PHONY : common_lib/fast
 
-src/computing.o: src/computing.cpp.o
+src/child.o: src/child.cpp.o
 
-.PHONY : src/computing.o
+.PHONY : src/child.o
 
 # target to build an object file
-src/computing.cpp.o:
-	$(MAKE) -f CMakeFiles/computing.dir/build.make CMakeFiles/computing.dir/src/computing.cpp.o
-.PHONY : src/computing.cpp.o
+src/child.cpp.o:
+	$(MAKE) -f CMakeFiles/computing.dir/build.make CMakeFiles/computing.dir/src/child.cpp.o
+.PHONY : src/child.cpp.o
 
-src/computing.i: src/computing.cpp.i
+src/child.i: src/child.cpp.i
 
-.PHONY : src/computing.i
+.PHONY : src/child.i
 
 # target to preprocess a source file
-src/computing.cpp.i:
-	$(MAKE) -f CMakeFiles/computing.dir/build.make CMakeFiles/computing.dir/src/computing.cpp.i
-.PHONY : src/computing.cpp.i
+src/child.cpp.i:
+	$(MAKE) -f CMakeFiles/computing.dir/build.make CMakeFiles/computing.dir/src/child.cpp.i
+.PHONY : src/child.cpp.i
 
-src/computing.s: src/computing.cpp.s
+src/child.s: src/child.cpp.s
 
-.PHONY : src/computing.s
+.PHONY : src/child.s
 
 # target to generate assembly for a file
-src/computing.cpp.s:
-	$(MAKE) -f CMakeFiles/computing.dir/build.make CMakeFiles/computing.dir/src/computing.cpp.s
-.PHONY : src/computing.cpp.s
+src/child.cpp.s:
+	$(MAKE) -f CMakeFiles/computing.dir/build.make CMakeFiles/computing.dir/src/child.cpp.s
+.PHONY : src/child.cpp.s
 
 src/control.o: src/control.cpp.o
 
@@ -203,32 +203,86 @@ src/control.cpp.s:
 	$(MAKE) -f CMakeFiles/control.dir/build.make CMakeFiles/control.dir/src/control.cpp.s
 .PHONY : src/control.cpp.s
 
-src/lib.o: src/lib.cpp.o
+src/nodes.o: src/nodes.cpp.o
 
-.PHONY : src/lib.o
+.PHONY : src/nodes.o
 
 # target to build an object file
-src/lib.cpp.o:
-	$(MAKE) -f CMakeFiles/lab5_7_lib.dir/build.make CMakeFiles/lab5_7_lib.dir/src/lib.cpp.o
-.PHONY : src/lib.cpp.o
+src/nodes.cpp.o:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/nodes.cpp.o
+.PHONY : src/nodes.cpp.o
 
-src/lib.i: src/lib.cpp.i
+src/nodes.i: src/nodes.cpp.i
 
-.PHONY : src/lib.i
+.PHONY : src/nodes.i
 
 # target to preprocess a source file
-src/lib.cpp.i:
-	$(MAKE) -f CMakeFiles/lab5_7_lib.dir/build.make CMakeFiles/lab5_7_lib.dir/src/lib.cpp.i
-.PHONY : src/lib.cpp.i
+src/nodes.cpp.i:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/nodes.cpp.i
+.PHONY : src/nodes.cpp.i
 
-src/lib.s: src/lib.cpp.s
+src/nodes.s: src/nodes.cpp.s
 
-.PHONY : src/lib.s
+.PHONY : src/nodes.s
 
 # target to generate assembly for a file
-src/lib.cpp.s:
-	$(MAKE) -f CMakeFiles/lab5_7_lib.dir/build.make CMakeFiles/lab5_7_lib.dir/src/lib.cpp.s
-.PHONY : src/lib.cpp.s
+src/nodes.cpp.s:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/nodes.cpp.s
+.PHONY : src/nodes.cpp.s
+
+src/utils.o: src/utils.cpp.o
+
+.PHONY : src/utils.o
+
+# target to build an object file
+src/utils.cpp.o:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/utils.cpp.o
+.PHONY : src/utils.cpp.o
+
+src/utils.i: src/utils.cpp.i
+
+.PHONY : src/utils.i
+
+# target to preprocess a source file
+src/utils.cpp.i:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/utils.cpp.i
+.PHONY : src/utils.cpp.i
+
+src/utils.s: src/utils.cpp.s
+
+.PHONY : src/utils.s
+
+# target to generate assembly for a file
+src/utils.cpp.s:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/utils.cpp.s
+.PHONY : src/utils.cpp.s
+
+src/zmq_operations.o: src/zmq_operations.cpp.o
+
+.PHONY : src/zmq_operations.o
+
+# target to build an object file
+src/zmq_operations.cpp.o:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/zmq_operations.cpp.o
+.PHONY : src/zmq_operations.cpp.o
+
+src/zmq_operations.i: src/zmq_operations.cpp.i
+
+.PHONY : src/zmq_operations.i
+
+# target to preprocess a source file
+src/zmq_operations.cpp.i:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/zmq_operations.cpp.i
+.PHONY : src/zmq_operations.cpp.i
+
+src/zmq_operations.s: src/zmq_operations.cpp.s
+
+.PHONY : src/zmq_operations.s
+
+# target to generate assembly for a file
+src/zmq_operations.cpp.s:
+	$(MAKE) -f CMakeFiles/common_lib.dir/build.make CMakeFiles/common_lib.dir/src/zmq_operations.cpp.s
+.PHONY : src/zmq_operations.cpp.s
 
 # Help Target
 help:
@@ -240,16 +294,22 @@ help:
 	@echo "... computing"
 	@echo "... rebuild_cache"
 	@echo "... control"
-	@echo "... lab5_7_lib"
-	@echo "... src/computing.o"
-	@echo "... src/computing.i"
-	@echo "... src/computing.s"
+	@echo "... common_lib"
+	@echo "... src/child.o"
+	@echo "... src/child.i"
+	@echo "... src/child.s"
 	@echo "... src/control.o"
 	@echo "... src/control.i"
 	@echo "... src/control.s"
-	@echo "... src/lib.o"
-	@echo "... src/lib.i"
-	@echo "... src/lib.s"
+	@echo "... src/nodes.o"
+	@echo "... src/nodes.i"
+	@echo "... src/nodes.s"
+	@echo "... src/utils.o"
+	@echo "... src/utils.i"
+	@echo "... src/utils.s"
+	@echo "... src/zmq_operations.o"
+	@echo "... src/zmq_operations.i"
+	@echo "... src/zmq_operations.s"
 .PHONY : help
 
 

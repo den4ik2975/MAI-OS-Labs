@@ -1,5 +1,5 @@
-// control.cpp
-#include "./lib.h"
+#include "unordered_set"
+#include "zmq_operations.h"
 
 class Controller {
 private:
@@ -86,7 +86,7 @@ private:
     void broadcast_message(const Message& message) {
         pending_messages_.push_back(message);
         for (auto& child : children_) {
-            send_message(child, message);
+            zmq_lib::send_message(child, message);
         }
     }
 
@@ -159,7 +159,7 @@ private:
 
         auto msg = Message(CommandType::HeartBeat, -1, time);
         for (auto& child : children_) {
-            send_message(child, msg);
+            zmq_lib::send_message(child, msg);
         }
     }
 
@@ -169,8 +169,8 @@ private:
                     now() - value).count() > 4 * heartbeat.count())
             {
                 std::cout << "Node: " << key << " has no beat!" << std::endl;
+                value = now();
             }
-            value = now();
         }
     }
 
@@ -184,7 +184,7 @@ public:
         while (true) {
             // Handle messages from children
             for (auto& child : children_) {
-                Message message = receive_message(child);
+                Message message = zmq_lib::receive_message(child);
                 if (message.command != CommandType::None) {
                     handle_child_message(message);
                 }
