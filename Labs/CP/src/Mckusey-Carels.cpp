@@ -166,14 +166,14 @@ void insert_sorted(PageInfo* page) {
 
 
 public:
-    McKusickAllocator(size_t pages_count = 16) :
-    free_page_info(nullptr),
-    total_pages(pages_count) {
+    McKusickAllocator(size_t memory_size = 16 * PAGE_SIZE) :
+    free_page_info(nullptr) {
+        total_pages = (memory_size + PAGE_SIZE - 1) / PAGE_SIZE;
 
         std::memset(freelistarr, 0, sizeof(freelistarr));
 
         // Allocate memory for pages
-        size_t total_size = pages_count * PAGE_SIZE;
+        size_t total_size = total_pages * PAGE_SIZE;
         initial_memory = mmap(nullptr, total_size,
                             PROT_READ | PROT_WRITE,
                             MAP_PRIVATE | MAP_ANONYMOUS,
@@ -184,7 +184,7 @@ public:
         }
 
         // Allocate memory for metadata
-        size_t metadata_size = pages_count * sizeof(PageInfo);
+        size_t metadata_size = total_pages * sizeof(PageInfo);
         metadata_memory = mmap(nullptr, metadata_size,
                              PROT_READ | PROT_WRITE,
                              MAP_PRIVATE | MAP_ANONYMOUS,
@@ -200,17 +200,17 @@ public:
         uint8_t* mem_ptr = static_cast<uint8_t*>(initial_memory);
 
         // Initialize in ascending order
-        for (size_t i = 0; i < pages_count; ++i) {
+        for (size_t i = 0; i < total_pages; ++i) {
             info_ptr[i].page_addr = mem_ptr + (i * PAGE_SIZE);
             info_ptr[i].size = 0;
             info_ptr[i].is_start_of_buffer = false;
         }
 
         // Link pages in ascending order
-        for (size_t i = 0; i < pages_count - 1; ++i) {
+        for (size_t i = 0; i < total_pages - 1; ++i) {
             info_ptr[i].next = &info_ptr[i + 1];
         }
-        info_ptr[pages_count - 1].next = nullptr;
+        info_ptr[total_pages - 1].next = nullptr;
 
         free_page_info = &info_ptr[0];  // Start with first page
     }
