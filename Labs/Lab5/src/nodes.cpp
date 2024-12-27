@@ -171,6 +171,5 @@ void ComputingNode::run() {
         default:
             break;
         }
-        usleep(100000);
     }
 }
