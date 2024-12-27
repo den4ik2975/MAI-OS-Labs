@@ -118,26 +118,4 @@ public:
         }
     }
 
-    // Опциональная реализация realloc
-    void* realloc(void* ptr, size_t new_size) {
-        if (!ptr) return malloc(new_size);
-        if (new_size == 0) {
-            free(ptr);
-            return nullptr;
-        }
-
-        BlockHeader* block = reinterpret_cast<BlockHeader*>(
-            static_cast<char*>(ptr) - sizeof(BlockHeader)
-        );
-
-        size_t current_size = block->size - sizeof(BlockHeader);
-        if (new_size <= current_size) return ptr;
-
-        void* new_ptr = malloc(new_size);
-        if (!new_ptr) return nullptr;
-
-        memcpy(new_ptr, ptr, current_size);
-        free(ptr);
-        return new_ptr;
-    }
 };

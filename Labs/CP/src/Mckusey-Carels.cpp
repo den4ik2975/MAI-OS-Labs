@@ -159,7 +159,7 @@ void insert_sorted(PageInfo* page) {
         size_t page_index = (page_addr - base_addr) / PAGE_SIZE;
 
         // Check if the index is valid
-        if (page_index >= total_pages) return nullptr;
+        if (page_index >= (total_pages - 1)) return nullptr;
 
         return static_cast<PageInfo*>(metadata_memory) + page_index;
     }
@@ -172,45 +172,37 @@ public:
 
         std::memset(freelistarr, 0, sizeof(freelistarr));
 
-        // Allocate memory for pages
-        size_t total_size = total_pages * PAGE_SIZE;
-        initial_memory = mmap(nullptr, total_size,
-                            PROT_READ | PROT_WRITE,
-                            MAP_PRIVATE | MAP_ANONYMOUS,
-                            -1, 0);
 
-        if (initial_memory == MAP_FAILED) {
-            throw std::runtime_error("Failed to allocate memory for pages");
+        // Один вызов mmap вместо двух
+        void* memory = mmap(nullptr, total_pages * PAGE_SIZE,
+                           PROT_READ | PROT_WRITE,
+                           MAP_PRIVATE | MAP_ANONYMOUS,
+                           -1, 0);
+
+        if (memory == MAP_FAILED) {
+            throw std::runtime_error("Failed to allocate memory");
         }
 
-        // Allocate memory for metadata
-        size_t metadata_size = total_pages * sizeof(PageInfo);
-        metadata_memory = mmap(nullptr, metadata_size,
-                             PROT_READ | PROT_WRITE,
-                             MAP_PRIVATE | MAP_ANONYMOUS,
-                             -1, 0);
+        // Устанавливаем указатели
+        metadata_memory = memory;
+        initial_memory = static_cast<char*>(memory) + PAGE_SIZE;
 
-        if (metadata_memory == MAP_FAILED) {
-            munmap(initial_memory, total_size);
-            throw std::runtime_error("Failed to allocate memory for metadata");
-        }
-
-        // Initialize page info structures
+        // Дальше ваш код без изменений
         PageInfo* info_ptr = static_cast<PageInfo*>(metadata_memory);
         uint8_t* mem_ptr = static_cast<uint8_t*>(initial_memory);
 
         // Initialize in ascending order
-        for (size_t i = 0; i < total_pages; ++i) {
+        for (size_t i = 0; i < total_pages - 1; ++i) {
             info_ptr[i].page_addr = mem_ptr + (i * PAGE_SIZE);
             info_ptr[i].size = 0;
             info_ptr[i].is_start_of_buffer = false;
         }
 
         // Link pages in ascending order
-        for (size_t i = 0; i < total_pages - 1; ++i) {
+        for (size_t i = 0; i < total_pages - 2; ++i) {
             info_ptr[i].next = &info_ptr[i + 1];
         }
-        info_ptr[total_pages - 1].next = nullptr;
+        info_ptr[total_pages - 2].next = nullptr;
 
         free_page_info = &info_ptr[0];  // Start with first page
     }
@@ -285,11 +277,8 @@ public:
     }
 
     ~McKusickAllocator() {
-        if (initial_memory) {
-            munmap(initial_memory, total_pages * PAGE_SIZE);
-        }
         if (metadata_memory) {
-            munmap(metadata_memory, total_pages * sizeof(PageInfo));
+            munmap(metadata_memory, total_pages * PAGE_SIZE);
         }
     }
 };
