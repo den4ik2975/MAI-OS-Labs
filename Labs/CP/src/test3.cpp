@@ -4,6 +4,7 @@
 #include <cstring>
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
 
 static const size_t PAGE_SIZE = 4096;
 static const size_t MIN_BLOCK_SIZE = 32;
@@ -60,56 +61,55 @@ void insert_sorted(PageInfo* page) {
     }
 
     PageInfo* find_consecutive_pages(size_t num_pages) {
+        if (num_pages == 0) return nullptr;
+
         PageInfo* current = free_page_info;
-        PageInfo* start = nullptr;
-        size_t consecutive = 0;
         PageInfo* prev = nullptr;
-        PageInfo* start_prev = nullptr;
 
         while (current) {
-            if (!start) {
-                start = current;
-                start_prev = prev;
-                consecutive = 1;
-            } else {
-                uintptr_t expected_addr = reinterpret_cast<uintptr_t>(
-                    static_cast<uint8_t*>(start->page_addr) + (consecutive * PAGE_SIZE));
+            PageInfo* potential_start = current;
+            size_t found_consecutive = 1;
+            PageInfo* page_walker = current;
 
-                if (reinterpret_cast<uintptr_t>(current->page_addr) == expected_addr) {
-                    consecutive++;
-                } else {
-                    start = current;
-                    start_prev = prev;
-                    consecutive = 1;
+            // Check for consecutive pages
+            while (found_consecutive < num_pages && page_walker->next) {
+                uintptr_t expected_addr = reinterpret_cast<uintptr_t>(potential_start->page_addr)
+                                        + (found_consecutive * PAGE_SIZE);
+                if (reinterpret_cast<uintptr_t>(page_walker->next->page_addr) != expected_addr) {
+                    break;
                 }
+
+                page_walker = page_walker->next;
+                found_consecutive++;
             }
 
-            if (consecutive == num_pages) {
-                // Remove these pages from free list
-                PageInfo* next_after_range = current->next;
+            if (found_consecutive == num_pages) {
+                // Found enough consecutive pages
+                PageInfo* next_after_range = page_walker->next;
 
-                // Update the free list to skip the allocated range
-                if (start_prev)
-                    start_prev->next = next_after_range;
+                // Remove the range from free list
+                if (prev)
+                    prev->next = next_after_range;
                 else
                     free_page_info = next_after_range;
 
-                // Setup the allocated pages
-                PageInfo* page = start;
+                // Link the allocated pages
+                page_walker = potential_start;
                 for (size_t i = 0; i < num_pages - 1; i++) {
-                    page->next = page + 1;
-                    page->is_start_of_buffer = (i == 0);
-                    page = page->next;
+                    page_walker->is_start_of_buffer = (i == 0);
+                    page_walker->next = page_walker + 1;
+                    page_walker = page_walker->next;
                 }
-                page->next = nullptr;
-                page->is_start_of_buffer = false;
+                page_walker->next = nullptr;
+                page_walker->is_start_of_buffer = false;
 
-                return start;
+                return potential_start;
             }
 
             prev = current;
             current = current->next;
         }
+
         return nullptr;
     }
 
@@ -167,8 +167,8 @@ void insert_sorted(PageInfo* page) {
 
 public:
     McKusickAllocator(size_t pages_count = 16) :
-        free_page_info(nullptr),
-        total_pages(pages_count) {
+    free_page_info(nullptr),
+    total_pages(pages_count) {
 
         std::memset(freelistarr, 0, sizeof(freelistarr));
 
@@ -199,14 +199,22 @@ public:
         PageInfo* info_ptr = static_cast<PageInfo*>(metadata_memory);
         uint8_t* mem_ptr = static_cast<uint8_t*>(initial_memory);
 
+        // Initialize in ascending order
         for (size_t i = 0; i < pages_count; ++i) {
             info_ptr[i].page_addr = mem_ptr + (i * PAGE_SIZE);
             info_ptr[i].size = 0;
             info_ptr[i].is_start_of_buffer = false;
-            info_ptr[i].next = free_page_info;
-            free_page_info = &info_ptr[i];
         }
+
+        // Link pages in ascending order
+        for (size_t i = 0; i < pages_count - 1; ++i) {
+            info_ptr[i].next = &info_ptr[i + 1];
+        }
+        info_ptr[pages_count - 1].next = nullptr;
+
+        free_page_info = &info_ptr[0];  // Start with first page
     }
+
 
     void* alloc(size_t size) {
         if (size == 0) return nullptr;
@@ -229,15 +237,26 @@ public:
             return block;
         } else {
             size_t pages_needed = get_required_pages(size);
-            PageInfo* start_page_info = find_consecutive_pages(pages_needed);
 
-            if (!start_page_info) return nullptr;
+            // Debug: Print available pages
+            PageInfo* current = free_page_info;
+            size_t available_pages = 0;
+            while (current) {
+                available_pages++;
+                current = current->next;
+            }
+
+            PageInfo* start_page_info = find_consecutive_pages(pages_needed);
+            if (!start_page_info) {
+                return nullptr;
+            }
 
             start_page_info->size = size;
             start_page_info->is_start_of_buffer = true;
             return start_page_info->page_addr;
         }
     }
+
 
     void free(void* ptr) {
         if (!ptr) return;
