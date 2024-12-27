@@ -32,9 +32,11 @@ private:
 
     static size_t get_bucket_index(size_t size) {
         if (size > MAX_BLOCK_SIZE) return BUCKET_COUNT;
+
         size_t normalized = std::max(MIN_BLOCK_SIZE,
                                    size_t(1) << (64 - __builtin_clzl(size - 1)));
-        return (normalized / MIN_BLOCK_SIZE) - 1;
+
+        return __builtin_ctz(normalized) - 5;  // since 32 is 2^5
     }
 
     static size_t get_required_pages(size_t size) {
