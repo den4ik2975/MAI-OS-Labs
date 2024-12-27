@@ -43,45 +43,90 @@ private:
         return (size + PAGE_SIZE - 1) / PAGE_SIZE;
     }
 
+void insert_sorted(PageInfo* page) {
+        // Keep free list sorted by address
+        if (!free_page_info || page->page_addr < free_page_info->page_addr) {
+            page->next = free_page_info;
+            free_page_info = page;
+            return;
+        }
+
+        PageInfo* current = free_page_info;
+        while (current->next && current->next->page_addr < page->page_addr) {
+            current = current->next;
+        }
+        page->next = current->next;
+        current->next = page;
+    }
+
     PageInfo* find_consecutive_pages(size_t num_pages) {
         PageInfo* current = free_page_info;
         PageInfo* start = nullptr;
         size_t consecutive = 0;
+        PageInfo* prev = nullptr;
+        PageInfo* start_prev = nullptr;
 
-        while (current && consecutive < num_pages) {
-            uintptr_t expected_next = reinterpret_cast<uintptr_t>(current->page_addr) + PAGE_SIZE;
-
+        while (current) {
             if (!start) {
                 start = current;
+                start_prev = prev;
                 consecutive = 1;
-            } else if (reinterpret_cast<uintptr_t>(current->page_addr) == expected_next) {
-                consecutive++;
             } else {
-                start = current;
-                consecutive = 1;
+                uintptr_t expected_addr = reinterpret_cast<uintptr_t>(
+                    static_cast<uint8_t*>(start->page_addr) + (consecutive * PAGE_SIZE));
+
+                if (reinterpret_cast<uintptr_t>(current->page_addr) == expected_addr) {
+                    consecutive++;
+                } else {
+                    start = current;
+                    start_prev = prev;
+                    consecutive = 1;
+                }
             }
 
             if (consecutive == num_pages) {
                 // Remove these pages from free list
-                PageInfo* new_free_head = current->next;
-                PageInfo* prev = nullptr;
-                current = free_page_info;
+                PageInfo* next_after_range = current->next;
 
-                while (current != start) {
-                    prev = current;
-                    current = current->next;
+                // Update the free list to skip the allocated range
+                if (start_prev)
+                    start_prev->next = next_after_range;
+                else
+                    free_page_info = next_after_range;
+
+                // Setup the allocated pages
+                PageInfo* page = start;
+                for (size_t i = 0; i < num_pages - 1; i++) {
+                    page->next = page + 1;
+                    page->is_start_of_buffer = (i == 0);
+                    page = page->next;
                 }
-
-                if (prev) prev->next = new_free_head;
-                else free_page_info = new_free_head;
+                page->next = nullptr;
+                page->is_start_of_buffer = false;
 
                 return start;
             }
 
+            prev = current;
             current = current->next;
         }
-
         return nullptr;
+    }
+
+    void coalesce_free_pages() {
+        if (!free_page_info) return;
+
+        PageInfo* current = free_page_info;
+        while (current && current->next) {
+            uintptr_t current_end = reinterpret_cast<uintptr_t>(current->page_addr) + PAGE_SIZE;
+
+            if (current_end == reinterpret_cast<uintptr_t>(current->next->page_addr)) {
+                // Coalesce adjacent pages
+                current->next = current->next->next;
+            } else {
+                current = current->next;
+            }
+        }
     }
 
     void split_page(PageInfo* page_info, size_t block_size) {
@@ -102,6 +147,23 @@ private:
         last_block->next = freelistarr[bucket];
         freelistarr[bucket] = reinterpret_cast<FreeBlock*>(page_info->page_addr);
     }
+
+    PageInfo* find_page_info(void* ptr) {
+        if (!ptr) return nullptr;
+
+        // Calculate the page start address by masking off the low bits
+        uintptr_t page_addr = reinterpret_cast<uintptr_t>(ptr) & ~(PAGE_SIZE - 1);
+
+        // Calculate the index in our metadata array
+        uintptr_t base_addr = reinterpret_cast<uintptr_t>(initial_memory);
+        size_t page_index = (page_addr - base_addr) / PAGE_SIZE;
+
+        // Check if the index is valid
+        if (page_index >= total_pages) return nullptr;
+
+        return static_cast<PageInfo*>(metadata_memory) + page_index;
+    }
+
 
 public:
     McKusickAllocator(size_t pages_count = 16) :
@@ -180,19 +242,7 @@ public:
     void free(void* ptr) {
         if (!ptr) return;
 
-        // Find corresponding page info
-        PageInfo* info_ptr = static_cast<PageInfo*>(metadata_memory);
-        PageInfo* page_info = nullptr;
-
-        for (size_t i = 0; i < total_pages; ++i) {
-            if (info_ptr[i].page_addr == ptr ||
-                (ptr >= info_ptr[i].page_addr &&
-                 ptr < static_cast<uint8_t*>(info_ptr[i].page_addr) + PAGE_SIZE)) {
-                page_info = &info_ptr[i];
-                break;
-            }
-        }
-
+        PageInfo* page_info = find_page_info(ptr);
         if (!page_info) return;
 
         if (page_info->size <= MAX_BLOCK_SIZE) {
@@ -203,13 +253,15 @@ public:
         } else if (page_info->is_start_of_buffer) {
             size_t pages_count = get_required_pages(page_info->size);
 
+            // Free all pages in the allocation
             for (size_t i = 0; i < pages_count; ++i) {
                 PageInfo* current = page_info + i;
-                current->next = free_page_info;
-                current->is_start_of_buffer = false;
                 current->size = 0;
-                free_page_info = current;
+                current->is_start_of_buffer = false;
+                insert_sorted(current);
             }
+
+            coalesce_free_pages();
         }
     }
 
